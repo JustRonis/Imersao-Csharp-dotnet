@@ -1,0 +1,15 @@
+/home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/bin/Debug/net6.0/fundamentos
+/home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/bin/Debug/net6.0/fundamentos.deps.json
+/home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/bin/Debug/net6.0/fundamentos.runtimeconfig.json
+/home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/bin/Debug/net6.0/fundamentos.dll
+/home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/bin/Debug/net6.0/ref/fundamentos.dll
+/home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/bin/Debug/net6.0/fundamentos.pdb
+/home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/obj/Debug/net6.0/fundamentos.csproj.AssemblyReference.cache
+/home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/obj/Debug/net6.0/fundamentos.GeneratedMSBuildEditorConfig.editorconfig
+/home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/obj/Debug/net6.0/fundamentos.AssemblyInfoInputs.cache
+/home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/obj/Debug/net6.0/fundamentos.AssemblyInfo.cs
+/home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/obj/Debug/net6.0/fundamentos.csproj.CoreCompileInputs.cache
+/home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/obj/Debug/net6.0/fundamentos.dll
+/home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/obj/Debug/net6.0/ref/fundamentos.dll
+/home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/obj/Debug/net6.0/fundamentos.pdb
+/home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/obj/Debug/net6.0/fundamentos.genruntimeconfig.cache
