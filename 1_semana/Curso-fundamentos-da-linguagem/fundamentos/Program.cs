@@ -40,8 +40,46 @@ namespace Fundamentos{
 
             var cultura =  new CultureInfo("pt-BR");
              Console.WriteLine(valor.ToString("C", cultura)); // formatar para 'coin' | moeda  - usando o padrão de moeda brasileiro
+
+             teste();
             
         }
 
+        static void teste(){
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j <= i; j++)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine("\n");
+            }
+            for (int i = 0; i <= 4; i++)
+            {
+                for (int j = 4; j >i; j--)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine("\n");
+            }
+            
+            Console.ReadKey();
+            teste2();
+        }
+
+        static void teste2(){
+            for(int i = 0; i < 6; i++)
+            {
+                Console.WriteLine("*");
+                Console.WriteLine("\n");
+            }
+            for(int j = 0; j < 6; j++)
+            {
+                Console.WriteLine("*");
+                Console.WriteLine("\n");
+            }
+        }
+        
+        
     }
 }

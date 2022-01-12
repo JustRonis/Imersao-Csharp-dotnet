@@ -13,3 +13,18 @@
 /home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/obj/Debug/net6.0/ref/fundamentos.dll
 /home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/obj/Debug/net6.0/fundamentos.pdb
 /home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/obj/Debug/net6.0/fundamentos.genruntimeconfig.cache
+C:\Users\ronal\Desktop\Projetos\Nova pasta\Imersao-Csharp-dotnet\1_semana\Curso-fundamentos-da-linguagem\fundamentos\obj\Debug\net6.0\fundamentos.csproj.AssemblyReference.cache
+C:\Users\ronal\Desktop\Projetos\Nova pasta\Imersao-Csharp-dotnet\1_semana\Curso-fundamentos-da-linguagem\fundamentos\obj\Debug\net6.0\fundamentos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ronal\Desktop\Projetos\Nova pasta\Imersao-Csharp-dotnet\1_semana\Curso-fundamentos-da-linguagem\fundamentos\obj\Debug\net6.0\fundamentos.AssemblyInfoInputs.cache
+C:\Users\ronal\Desktop\Projetos\Nova pasta\Imersao-Csharp-dotnet\1_semana\Curso-fundamentos-da-linguagem\fundamentos\obj\Debug\net6.0\fundamentos.AssemblyInfo.cs
+C:\Users\ronal\Desktop\Projetos\Nova pasta\Imersao-Csharp-dotnet\1_semana\Curso-fundamentos-da-linguagem\fundamentos\obj\Debug\net6.0\fundamentos.csproj.CoreCompileInputs.cache
+C:\Users\ronal\Desktop\Projetos\Nova pasta\Imersao-Csharp-dotnet\1_semana\Curso-fundamentos-da-linguagem\fundamentos\obj\Debug\net6.0\fundamentos.dll
+C:\Users\ronal\Desktop\Projetos\Nova pasta\Imersao-Csharp-dotnet\1_semana\Curso-fundamentos-da-linguagem\fundamentos\obj\Debug\net6.0\ref\fundamentos.dll
+C:\Users\ronal\Desktop\Projetos\Nova pasta\Imersao-Csharp-dotnet\1_semana\Curso-fundamentos-da-linguagem\fundamentos\obj\Debug\net6.0\fundamentos.pdb
+C:\Users\ronal\Desktop\Projetos\Nova pasta\Imersao-Csharp-dotnet\1_semana\Curso-fundamentos-da-linguagem\fundamentos\bin\Debug\net6.0\fundamentos.exe
+C:\Users\ronal\Desktop\Projetos\Nova pasta\Imersao-Csharp-dotnet\1_semana\Curso-fundamentos-da-linguagem\fundamentos\bin\Debug\net6.0\fundamentos.deps.json
+C:\Users\ronal\Desktop\Projetos\Nova pasta\Imersao-Csharp-dotnet\1_semana\Curso-fundamentos-da-linguagem\fundamentos\bin\Debug\net6.0\fundamentos.runtimeconfig.json
+C:\Users\ronal\Desktop\Projetos\Nova pasta\Imersao-Csharp-dotnet\1_semana\Curso-fundamentos-da-linguagem\fundamentos\bin\Debug\net6.0\fundamentos.dll
+C:\Users\ronal\Desktop\Projetos\Nova pasta\Imersao-Csharp-dotnet\1_semana\Curso-fundamentos-da-linguagem\fundamentos\bin\Debug\net6.0\ref\fundamentos.dll
+C:\Users\ronal\Desktop\Projetos\Nova pasta\Imersao-Csharp-dotnet\1_semana\Curso-fundamentos-da-linguagem\fundamentos\bin\Debug\net6.0\fundamentos.pdb
+C:\Users\ronal\Desktop\Projetos\Nova pasta\Imersao-Csharp-dotnet\1_semana\Curso-fundamentos-da-linguagem\fundamentos\obj\Debug\net6.0\fundamentos.genruntimeconfig.cache

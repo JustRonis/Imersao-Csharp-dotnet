@@ -8,24 +8,26 @@
     "net6.0": []
   },
   "packageFolders": {
-    "/home/ronaldo/.nuget/packages/": {}
+    "C:\\Users\\ronal\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/fundamentos.csproj",
+      "projectUniqueName": "C:\\Users\\ronal\\Desktop\\Projetos\\Nova pasta\\Imersao-Csharp-dotnet\\1_semana\\Curso-fundamentos-da-linguagem\\fundamentos\\fundamentos.csproj",
       "projectName": "fundamentos",
-      "projectPath": "/home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/fundamentos.csproj",
-      "packagesPath": "/home/ronaldo/.nuget/packages/",
-      "outputPath": "/home/ronaldo/Desktop/Imersao-CSharp/1_semana/Curso-fundamentos-da-linguagem/fundamentos/obj/",
+      "projectPath": "C:\\Users\\ronal\\Desktop\\Projetos\\Nova pasta\\Imersao-Csharp-dotnet\\1_semana\\Curso-fundamentos-da-linguagem\\fundamentos\\fundamentos.csproj",
+      "packagesPath": "C:\\Users\\ronal\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ronal\\Desktop\\Projetos\\Nova pasta\\Imersao-Csharp-dotnet\\1_semana\\Curso-fundamentos-da-linguagem\\fundamentos\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/ronaldo/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\ronal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -58,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.101/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
