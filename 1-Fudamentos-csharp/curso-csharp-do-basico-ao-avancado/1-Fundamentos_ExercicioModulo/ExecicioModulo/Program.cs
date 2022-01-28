@@ -9,7 +9,7 @@ Criar um novo projeto console .net core 5.0  (Conhecimento de plataforma)
 
 2º
 
-Criar uma classe que contenha um metodo que recebe a ficha de uma pessoa  (Variáveis, constantes, inferência, Leitura de dados no console )
+Criar metodo que recebe a ficha de uma pessoa  (Variáveis, Leitura de dados no console )
 
 Nome;
 Inf - Idade;
@@ -87,51 +87,71 @@ namespace ExecicioModulo
 
         static void ficha()
         {
-            Console.WriteLine("#### FICHA ####");
-            Console.WriteLine("");
-            Console.WriteLine("Digite as informações solicitadas abaixo");
-            Console.WriteLine("");
+            try { 
+                Console.WriteLine("#### FICHA ####");
+                Console.WriteLine("");
+                Console.WriteLine("Digite as informações solicitadas abaixo");
+                Console.WriteLine("");
 
-            Console.Write("Nome: ");
-            string nome = Console.ReadLine();
+                Console.Write("Nome: ");
+                string nome = Console.ReadLine();
+
+                Console.Write("Idade: ");
+                string idadeProv = Console.ReadLine();
+                int idade = int.Parse(idadeProv);
+
+                Console.Write("Sexo: ");
+                string sexo = Console.ReadLine();
+
+                Console.Write("Nome mae: ");
+                string nomeMae = Console.ReadLine();
+
+                Console.Write("Nome pai: ");
+                string nomePai = Console.ReadLine();
+
+                Console.Write("Numero RG: ");
+                string numeroRGProv = Console.ReadLine();
+                ulong numeroRG = Convert.ToUInt64(numeroRGProv);
+
+                Console.Write("Numero CPF: ");
+                string numeroCPFProv = Console.ReadLine();
+                ulong numeroCPF = Convert.ToUInt64(numeroCPFProv);
+
+                validaCampos(nome, idade, sexo, nomeMae, nomePai, numeroRG, numeroCPF);
+            }
+            catch 
+            {
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("Erro - Dado inválido. - Preencha a ficha novamente");
+                System.Threading.Thread.Sleep(3000);
+                ficha();
+            }
             
-            Console.Write("Idade: ");
-            int idade = Console.Read();
-
-            Console.Write("Sexo: ");
-            string sexo;
-            sexo = Console.ReadLine();
-
-            Console.Write("Nome mae: ");
-            string nomeMae = Console.ReadLine();
-
-            Console.Write("Nome pai: ");
-            string nomePai = Console.ReadLine();
-            
-            Console.Write("Numero RG: ");
-            int numeroRG = Console.Read();           
-
-            Console.Write("Numero CPF: ");
-            int numeroCPF = Console.Read();
- 
-
-            //process(nome, idade, sexo, nomeMae, nomePai, numeroRG, numeroCPF);
+        
         }
 
-        static void process(string nome, int idade, string sexo, string nomeMae, string nomePai, int numeroRG, int numeroCPF)
+        static void validaCampos(string nome, int idade, string sexo, string nomeMae, string nomePai, ulong numeroRG, ulong numeroCPF)
         {
             if (string.IsNullOrEmpty(nome))
             {
+                Console.WriteLine("");
+                Console.WriteLine("");
                 Console.WriteLine("Erro - Nome vazio. - Preencha a ficha novamente");
                 ficha();
             }
-            if (idade == 0 ) 
+            if (idade == 0)
             {
+                Console.WriteLine("");
+                Console.WriteLine("");
                 Console.WriteLine("Erro - Idade vazia. - Preencha a ficha novamente");
                 ficha();
             }
+
             if (string.IsNullOrEmpty(sexo))
             {
+                Console.WriteLine("");
+                Console.WriteLine("");
                 Console.WriteLine("Erro - Sexo vazio. - Preencha a ficha novamente");
                 ficha();
             }
@@ -140,25 +160,43 @@ namespace ExecicioModulo
 
             if (verificaSexo == false)
             {
+                Console.WriteLine("");
+                Console.WriteLine("");
                 Console.WriteLine("Erro - Sexo preenchido errado - Preencha a ficha novamente");
                 ficha();
             }
 
-            if (numeroRG == 0)
-            {
-                Console.WriteLine("Erro - RG vazio. - Preencha a ficha novamente");
-                ficha();
-            }
-            if (numeroCPF == 0)
-            {
-                Console.WriteLine("Erro - CPF vazio. - Preencha a ficha novamente");
-                ficha();
-            }
-
-             
-            Console.WriteLine("Fim");
-
+            validaNome(nome);
+           
         }
+
+        //static void validaNome(string nome)
+        //{
+        //    string[] partesNome = nome.Split(' ');
+
+        //    foreach(var parteNome in partesNome)
+        //    {
+        //        if (char.IsLower(parteNome[0]))
+        //        {
+        //            nome +=
+        //            parteNome.Substring(0, 1).ToUpper(); 
+        //            parteNome.Substring(1);
+
+        //        }
+        //    }
+        //    Console.WriteLine(nome);
+        //}
+
+        static void validaNome(string nome)
+        {
+            System.Globalization.CultureInfo cultureinfo = System.Threading.Thread.CurrentThread.CurrentCulture;
+            nome = cultureinfo.TextInfo.ToTitleCase(nome);
+
+            Console.WriteLine(nome);
+            Console.ReadKey();
+        }
+
+         
 
         
     }
