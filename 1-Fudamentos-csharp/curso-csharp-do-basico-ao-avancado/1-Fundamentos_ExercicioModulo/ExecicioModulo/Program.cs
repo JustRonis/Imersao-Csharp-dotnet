@@ -43,7 +43,7 @@ Se o sexo for masculino - Apresentação obrigatória no exercito; (ternario)
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 
-6º(operadores lógicos)
+6º
 
 Se o nome do pai e da mãe forem declarados = Pais presente
 
@@ -82,10 +82,10 @@ namespace ExecicioModulo
     {
         static void Main(string[] args)
         {
-            ficha();
+            Ficha();
         }
 
-        static void ficha()
+        static void Ficha()
         {
             try { 
                 Console.WriteLine("#### FICHA ####");
@@ -117,7 +117,7 @@ namespace ExecicioModulo
                 string numeroCPFProv = Console.ReadLine();
                 ulong numeroCPF = Convert.ToUInt64(numeroCPFProv);
 
-                validaCampos(nome, idade, sexo, nomeMae, nomePai, numeroRG, numeroCPF);
+                ValidaCampos(nome, idade, sexo, nomeMae, nomePai, numeroRG, numeroCPF);
             }
             catch 
             {
@@ -125,27 +125,27 @@ namespace ExecicioModulo
                 Console.WriteLine("");
                 Console.WriteLine("Erro - Dado inválido. - Preencha a ficha novamente");
                 System.Threading.Thread.Sleep(3000);
-                ficha();
+                Ficha();
             }
             
         
         }
 
-        static void validaCampos(string nome, int idade, string sexo, string nomeMae, string nomePai, ulong numeroRG, ulong numeroCPF)
+        static void ValidaCampos(string nome, int idade, string sexo, string nomeMae, string nomePai, ulong numeroRG, ulong numeroCPF)
         {
             if (string.IsNullOrEmpty(nome))
             {
                 Console.WriteLine("");
                 Console.WriteLine("");
                 Console.WriteLine("Erro - Nome vazio. - Preencha a ficha novamente");
-                ficha();
+                Ficha();
             }
             if (idade == 0)
             {
                 Console.WriteLine("");
                 Console.WriteLine("");
                 Console.WriteLine("Erro - Idade vazia. - Preencha a ficha novamente");
-                ficha();
+                Ficha();
             }
 
             if (string.IsNullOrEmpty(sexo))
@@ -153,20 +153,24 @@ namespace ExecicioModulo
                 Console.WriteLine("");
                 Console.WriteLine("");
                 Console.WriteLine("Erro - Sexo vazio. - Preencha a ficha novamente");
-                ficha();
+                Ficha();
             }
 
-            bool verificaSexo = sexo != "masuculino" ? true : false || sexo != "feminino" ? true : false;
 
-            if (verificaSexo == false)
+            System.Globalization.CultureInfo cultureinfo = System.Threading.Thread.CurrentThread.CurrentCulture;
+            sexo = cultureinfo.TextInfo.ToTitleCase(sexo);
+            bool verificaSexoMasc = sexo != "Masculino" ? true : false;
+            bool verificaSexoFem =  sexo != "Feminino" ? true : false;
+
+            if (verificaSexoMasc == true && verificaSexoFem == true )
             {
                 Console.WriteLine("");
                 Console.WriteLine("");
-                Console.WriteLine("Erro - Sexo preenchido errado - Preencha a ficha novamente");
-                ficha();
+                Console.WriteLine("Erro - Sexo preenchido errado - Preencha a ficha novamente - Preencha: masculino ou feminino");
+                Ficha();
             }
 
-            validaNome(nome);
+            ValidaNome(nome, idade, sexo, nomeMae, nomePai, numeroRG, numeroCPF);
            
         }
 
@@ -187,18 +191,90 @@ namespace ExecicioModulo
         //    Console.WriteLine(nome);
         //}
 
-        static void validaNome(string nome)
+        static void ValidaNome(string nome, int idade, string sexo, string nomeMae, string nomePai, ulong numeroRG, ulong numeroCPF)
         {
             System.Globalization.CultureInfo cultureinfo = System.Threading.Thread.CurrentThread.CurrentCulture;
             nome = cultureinfo.TextInfo.ToTitleCase(nome);
-
             Console.WriteLine(nome);
-            Console.ReadKey();
+            ValidaHabilitacaoESexo(nome, idade, sexo, nomeMae, nomePai, numeroRG, numeroCPF);
         }
 
-         
+        static void ValidaHabilitacaoESexo(string nome, int idade, string sexo, string nomeMae, string nomePai, ulong numeroRG, ulong numeroCPF)
+        {
+            string tirarHabilitacao =  idade >= 18 ? "Pode tirar habilitação" : "Não pode tirar habilitação";
+            string irAoExercito = sexo == "Masculino" && idade >= 18 ? "Você precisa comparacer no exercito" : "Você não precisa ir ao exercito";
 
-        
+            ValidaPais(nome, idade, sexo, nomeMae, nomePai, numeroRG, numeroCPF, tirarHabilitacao, irAoExercito);
+
+        }
+
+        static void ValidaPais(string nome, int idade, string sexo, string nomeMae, string nomePai, ulong numeroRG, ulong numeroCPF, string tirarHabilitacao, string irAoExercito)
+        {
+            string situacaoParental;
+
+            if (string.IsNullOrEmpty(nomePai) && string.IsNullOrEmpty(nomeMae))
+            {
+                situacaoParental = "Orfão";
+                ValidaIdade(nome, idade, sexo, nomeMae, nomePai, numeroRG, numeroCPF, tirarHabilitacao, irAoExercito, situacaoParental);
+            }
+
+            bool validaNomeMae = string.IsNullOrEmpty(nomeMae);
+            bool validaNomePai = string.IsNullOrEmpty(nomePai);
+            
+            if(validaNomeMae == true && validaNomePai == false) 
+            {
+                situacaoParental = "Mãe ausente";
+                ValidaIdade(nome, idade, sexo, nomeMae, nomePai, numeroRG, numeroCPF, tirarHabilitacao, irAoExercito, situacaoParental);
+            }
+
+            if(validaNomeMae == false && validaNomePai == true) 
+            {
+                situacaoParental = "Pai ausente";
+                ValidaIdade(nome, idade, sexo, nomeMae, nomePai, numeroRG, numeroCPF, tirarHabilitacao, irAoExercito, situacaoParental);
+            }
+
+            
+        }
+
+        static void ValidaIdade(string nome, int idade, string sexo, string nomeMae, string nomePai, ulong numeroRG, ulong numeroCPF, string tirarHabilitacao, string irAoExercito, string situacaoParental)
+        {
+            int idadeSomaDez = idade + 10;
+            int decadasVividas = idade / 10;
+            SomaCpf(nome, idade, sexo, nomeMae, nomePai, numeroRG, numeroCPF, tirarHabilitacao, irAoExercito, situacaoParental, idadeSomaDez, decadasVividas);
+        }
+
+        static void SomaCpf(string nome, int idade, string sexo, string nomeMae, string nomePai, ulong numeroRG, ulong numeroCPF, string tirarHabilitacao, string irAoExercito, string situacaoParental, int idadeSomaDez, int decadasVividas)
+        {
+            ulong numeroCPFMaisUm = ++numeroCPF;
+            ExibeInfoFicha(nome, idade, sexo, nomeMae, nomePai, numeroRG, numeroCPF, tirarHabilitacao, irAoExercito, situacaoParental, idadeSomaDez, decadasVividas, numeroCPFMaisUm);
+        }
+
+        static void ExibeInfoFicha(string nome, int idade, string sexo, string nomeMae, string nomePai, ulong numeroRG, ulong numeroCPF, string tirarHabilitacao, string irAoExercito, string situacaoParental, int idadeSomaDez, int decadasVividas, ulong numeroCPFMaisUm)
+        {
+            System.Console.Clear();
+            Console.WriteLine($"Nome: {nome}");
+            Console.WriteLine($"Idade: {idade}");
+            Console.WriteLine($"Sexo: {sexo}");
+            Console.WriteLine($"Nome Mae: {nomeMae}");
+            Console.WriteLine($"Nome Pai: {nomePai}");
+            Console.WriteLine($"RG: {numeroRG}");
+            Console.WriteLine($"CPF: {numeroCPF}");
+            Console.WriteLine("------------------------------------------------\t");
+            Console.WriteLine(tirarHabilitacao);
+            Console.WriteLine(irAoExercito);
+            Console.WriteLine(situacaoParental);
+            Console.WriteLine($"Idade daqui 10 anos: {idadeSomaDez}");
+            Console.WriteLine($"Quantidade de decadas vividas: {decadasVividas}");
+            Console.WriteLine($"Somar 1 no CPF: {numeroCPFMaisUm}");
+
+        }
+
+
+
+        /*
+        Some + 1 no último número do cpf;        
+        */
+
     }
 }
 

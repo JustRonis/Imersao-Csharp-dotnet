@@ -129,7 +129,4 @@ namespace Fundamentos
 }
 
 
-
-// Exercicio: 
-
-/* Escrever um metodo que
+ 
