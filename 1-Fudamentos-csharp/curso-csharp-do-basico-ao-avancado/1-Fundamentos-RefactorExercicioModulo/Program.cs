@@ -68,8 +68,7 @@ namespace _1_Fundamentos_RefactorExercicioModulo
             
             System.Console.Clear();
             int idade = 0;
-            ulong numeroRG, numeroCPF = 0;
-            string nome, sexo, nomeMae, nomePai = null;
+            string nome, sexo, nomeMae, nomePai, numeroRG, numeroCPF = null;
             //bool recebeNome, recebeIdade, recebeSexo, recebeRG, recebeCPF = false;
             bool validaCampos = false;
             do
@@ -182,11 +181,96 @@ namespace _1_Fundamentos_RefactorExercicioModulo
                     System.Threading.Thread.Sleep(2000);
                     validaCampos = false;
                 }
-
-                validaCampos = true;
+                else
+                {
+                    validaCampos = true;
+                }
 
             } while (validaCampos == false);
-            
+
+            do
+            {
+                Console.Write("Nome Pai: ");
+                nomePai = Console.ReadLine();
+
+                if (Regex.IsMatch(nomePai, @"^[0-9]+$"))
+                {
+                    Console.WriteLine("\t");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("** ERRO ** Nomes nao podem conter numeros");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    System.Threading.Thread.Sleep(2000);
+                    validaCampos = false;
+                }
+                else
+                {
+                    validaCampos = true;
+                }
+
+            } while (validaCampos == false);
+
+            do
+            {
+                Console.WriteLine("Numero RG: ");
+                numeroRG = Console.ReadLine();
+
+
+                if (string.IsNullOrEmpty(numeroRG))
+                {
+                    Console.WriteLine("\t");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("** Erro ** - Este campo não pode ser vazio");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    System.Threading.Thread.Sleep(2000);
+                    validaCampos = false;
+                }
+                if (Regex.IsMatch(numeroRG, @"(^\d{1,2}).?(\d{3}).?(\d{3})-?(\d{1}|X|x$)"))
+                {
+                    validaCampos = true;
+                }
+                else{
+                    Console.WriteLine("\t");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("** Erro ** - RG Preenchido errado - Preencha com a pontuacao correta. Exemplo: (99.999.999-0)");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    System.Threading.Thread.Sleep(2000);
+                    validaCampos = false;
+                }
+
+            } while (validaCampos == false);
+
+            do
+            {
+                Console.Write("Numero CPF: ");
+                numeroCPF = Console.ReadLine();
+
+
+                if (string.IsNullOrEmpty(numeroCPF))
+                {
+                    Console.WriteLine("\t");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("** Erro ** - Este campo não pode ser vazio");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    System.Threading.Thread.Sleep(2000);
+                    validaCampos = false;
+                }
+                if (Regex.IsMatch(numeroCPF, @"(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)"))
+                {
+                    validaCampos = true;
+                }
+                else
+                {
+                    Console.WriteLine("\t");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("** Erro ** - CPF Preenchido errado - Preencha com a pontuacao correta. Exemplo: (999.999.999-00)");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    System.Threading.Thread.Sleep(2000);
+                    validaCampos = false;
+                }
+
+            } while (validaCampos == false);
+
+
         }
 
         static void teste(int teste)
