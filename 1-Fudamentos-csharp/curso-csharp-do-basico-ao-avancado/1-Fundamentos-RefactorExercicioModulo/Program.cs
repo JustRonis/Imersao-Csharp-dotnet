@@ -40,9 +40,18 @@ Some + 1 no último número do cpf;
 End \o/ 
 */
 
-
+// 2º
+// Criar metodo que recebe a ficha de uma pessoa  (Variáveis, Leitura de dados no console )
+// Nome;
+// Inf - Idade;
+// Sexo;
+// Mae;
+// Pai;
+// Inf - RG;
+// CPF;
 
 using System;
+using System.Text.RegularExpressions;
 
 namespace _1_Fundamentos_RefactorExercicioModulo
 {
@@ -56,36 +65,137 @@ namespace _1_Fundamentos_RefactorExercicioModulo
 
         static void Ficha(){
             
-            bool recebeNome = true;
-            System.Console.Clear();
             
+            System.Console.Clear();
+            int idade = 0;
+            ulong numeroRG, numeroCPF = 0;
+            string nome, sexo, nomeMae, nomePai = null;
+            //bool recebeNome, recebeIdade, recebeSexo, recebeRG, recebeCPF = false;
+            bool validaCampos = false;
             do
             {
                 Console.Write("Nome: ");
-                string nome = Console.ReadLine();
-                
-                if(string.IsNullOrEmpty(nome))
+                nome = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(nome))
                 {
-                    recebeNome = false;
+                    Console.WriteLine("\t");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("** Erro ** - Este campo não pode ser vazio");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    System.Threading.Thread.Sleep(2000);
+                    System.Console.Clear();
+                    validaCampos = false;
+                }
+                else if (Regex.IsMatch(nome, @"^[0-9]+$"))
+                {
+                    Console.WriteLine("\t");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("** ERRO ** Nomes nao podem conter numeros");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    System.Threading.Thread.Sleep(2000);
+                    System.Console.Clear();
+                    validaCampos = false;
                 }
                 else
                 {
-                    recebeNome = true;
+                    validaCampos = true;
+                }
+        
+            }while(validaCampos == false);
+
+            do
+            {
+                try
+                {
+                    Console.Write("Idade: ");
+                    idade = int.Parse(Console.ReadLine());
+                    if (idade != 0)
+                    {
+                        validaCampos = true;
+
+                    }
+                }
+                catch
+                {
+                   
+                    Console.WriteLine("\t");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("** Erro ** - Este campo não pode ser vazio e tambem não aceita letras");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    System.Threading.Thread.Sleep(2000);
+                    Console.WriteLine("\t");
+                    validaCampos = false;
                 }
 
-            }while(recebeNome = false);
+            } while(validaCampos == false);
 
-            Console.Write("Idade: ");
-            Console.ReadKey();  
-                
+
+            do
+            {
+                Console.Write("Sexo: ");
+                sexo = Console.ReadLine();
+
+                System.Globalization.CultureInfo cultureinfo = System.Threading.Thread.CurrentThread.CurrentCulture;
+                sexo = cultureinfo.TextInfo.ToTitleCase(sexo);
+
+                if (string.IsNullOrEmpty(sexo))
+                {
+                    Console.WriteLine("\t");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("** Erro ** - Este campo não pode ser vazio");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    System.Threading.Thread.Sleep(2000);
+                    validaCampos = false;
+                }
+
+                bool verificaSexoMasc = sexo != "Masculino" ? true : false;
+                bool verificaSexoFem = sexo != "Feminino" ? true : false;
+
+                if (verificaSexoMasc == true && verificaSexoFem == true)
+                {
+                    Console.WriteLine("\t");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("** Erro **  - Sexo preenchido errado, apenas: masculino ou feminino");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    System.Threading.Thread.Sleep(2000);
+                    validaCampos = false;
+                }
+                else
+                {
+                    validaCampos = true;
+                }
+
+            } while (validaCampos == false);
+
+            do
+            {
+                Console.Write("Nome Mae: ");
+                nomeMae = Console.ReadLine();
+
+                if (Regex.IsMatch(nomeMae, @"^[0-9]+$"))
+                {
+                    Console.WriteLine("\t");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("** ERRO ** Nomes nao podem conter numeros");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    System.Threading.Thread.Sleep(2000);
+                    validaCampos = false;
+                }
+
+                validaCampos = true;
+
+            } while (validaCampos == false);
+            
         }
-    
 
+        static void teste(int teste)
+        {
+            Console.WriteLine(teste);
+        }
 
     }
 }
-
-
 
 // 2º
 // Criar metodo que recebe a ficha de uma pessoa  (Variáveis, Leitura de dados no console )
@@ -96,3 +206,4 @@ namespace _1_Fundamentos_RefactorExercicioModulo
 // Pai;
 // Inf - RG;
 // CPF;
+
