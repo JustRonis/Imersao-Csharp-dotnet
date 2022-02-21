@@ -198,6 +198,7 @@ namespace _1_Fundamentos_RefactorExercicioModulo
                     Console.WriteLine("\t");
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("** ERRO ** Nomes nao podem conter numeros");
+                    Console.WriteLine("\t");
                     Console.ForegroundColor = ConsoleColor.White;
                     System.Threading.Thread.Sleep(2000);
                     validaCampos = false;
@@ -211,7 +212,7 @@ namespace _1_Fundamentos_RefactorExercicioModulo
 
             do
             {
-                Console.WriteLine("Numero RG: ");
+                Console.Write("Numero RG: ");
                 numeroRG = Console.ReadLine();
 
 
@@ -220,8 +221,9 @@ namespace _1_Fundamentos_RefactorExercicioModulo
                     Console.WriteLine("\t");
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("** Erro ** - Este campo não pode ser vazio");
+                    Console.WriteLine("\t");
                     Console.ForegroundColor = ConsoleColor.White;
-                    System.Threading.Thread.Sleep(2000);
+                    System.Threading.Thread.Sleep(2000); 
                     validaCampos = false;
                 }
                 if (Regex.IsMatch(numeroRG, @"(^\d{1,2}).?(\d{3}).?(\d{3})-?(\d{1}|X|x$)"))
@@ -235,6 +237,7 @@ namespace _1_Fundamentos_RefactorExercicioModulo
                     Console.ForegroundColor = ConsoleColor.White;
                     System.Threading.Thread.Sleep(2000);
                     validaCampos = false;
+                    Console.WriteLine("\t");
                 }
 
             } while (validaCampos == false);
@@ -281,13 +284,4 @@ namespace _1_Fundamentos_RefactorExercicioModulo
     }
 }
 
-// 2º
-// Criar metodo que recebe a ficha de uma pessoa  (Variáveis, Leitura de dados no console )
-// Nome;
-// Inf - Idade;
-// Sexo;
-// Mae;
-// Pai;
-// Inf - RG;
-// CPF;
 
