@@ -13,11 +13,6 @@ Class Pessoa {
     Tanto os atributos quanto os metodos são os membros da classe Pessoa.
 }
 
-O que é um objeto?
-R: Ao instanciar uma classe, um objeto é criado. 
-
-Qual a difirença entre uma classe e um objeto?
-R:
 */
 
 
@@ -25,13 +20,19 @@ R:
 
 using System;
 
+
 namespace ConsoleApp1
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Membros teste = new Membros();
+            Console.WriteLine(teste.Apresentar());
+            teste.Nome = "Ronaldo";
+            teste.Idade = 21;
+            Console.WriteLine(teste.Apresentar());
+      
         }
     }
 }
