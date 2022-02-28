@@ -91,21 +91,59 @@ namespace RefactorExercicioModulo1
             void registrarNovaPessoa(){
 
                 FichaPessoa pessoa = new FichaPessoa();
+                ValidadorDeDados validador = new ValidadorDeDados();
 
-                Console.Write("Nome: ");
-                pessoa.Nome = Console.ReadLine();
-                Console.Write("Idade: ");
-                pessoa.Idade = int.Parse(Console.ReadLine());
-                Console.Write("Sexo: ");
-                pessoa.Sexo = Console.ReadLine();
-                Console.Write("Nome Mae: ");
-                pessoa.NomeMae = Console.ReadLine();
-                Console.Write("Nome Pai: ");
-                pessoa.NomePai = Console.ReadLine();
-                Console.Write("Numero RG: ");
-                pessoa.Rg = Console.ReadLine();
+                do
+                {
+                    Console.Write("Nome: ");
+                    pessoa.Nome = Console.ReadLine();
+                } while (!validador.ValidaNome(pessoa.Nome));
+
+                do
+                {
+                    try
+                    {
+                        Console.Write("Idade: ");
+                        pessoa.Idade = int.Parse(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        
+                    }
+
+                } while (!validador.ValidaIdade(pessoa.Idade));
+
+                do
+                {
+                    Console.Write("Sexo: ");
+                    pessoa.Sexo = Console.ReadLine();
+                } while (!validador.ValidaSexo(pessoa.Sexo));
+
+
+                do
+                {
+                    Console.Write("Nome Mae: ");
+                    pessoa.NomeMae = Console.ReadLine();
+                } while (!validador.ValidaNome(pessoa.NomeMae));
+
+                do
+                {
+                    Console.Write("Nome Pai: ");
+                    pessoa.NomePai = Console.ReadLine();
+                    validador.ValidaNome(pessoa.NomePai);
+                } while (!validador.ValidaNome(pessoa.NomePai));
+
+                do
+                {
+                    Console.Write("Numero RG: ");
+                    pessoa.Rg = Console.ReadLine();
+                } while (!validador.ValidaRg(pessoa.Rg));
+
+                do
+                {
                 Console.Write("Numero CPF: ");
                 pessoa.Cpf = Console.ReadLine();
+                } while (!validador.ValidaCpf(pessoa.Cpf));
 
 
                 StringBuilder strBuilder = new StringBuilder();
