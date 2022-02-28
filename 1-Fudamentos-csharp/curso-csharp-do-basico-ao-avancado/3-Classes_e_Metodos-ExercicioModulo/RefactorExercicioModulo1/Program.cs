@@ -78,7 +78,7 @@ namespace RefactorExercicioModulo1
                     break;
 
                 case 2:
-                    
+                    consultarPessoas();
                     break;
                 case 3:
                     
@@ -88,7 +88,7 @@ namespace RefactorExercicioModulo1
                     break;
             }
 
-            void registrarNovaPessoa(){
+            static void registrarNovaPessoa(){
 
                 FichaPessoa pessoa = new FichaPessoa();
                 ValidadorDeDados validador = new ValidadorDeDados();
@@ -155,12 +155,22 @@ namespace RefactorExercicioModulo1
                 Console.WriteLine(sqlQuery);
                 Console.ReadKey();
 
+                var ident = 0;
                 var connec = new ConnectSQLServer();         
-                connec.ProcessarQuery(sqlQuery);
+                connec.ProcessarQuery(sqlQuery, ident);
 
             }
+
+            static void consultarPessoas()
+            {          
+                var connec = new ConnectSQLServer();
+                int ident = 1;
+                string sqlQuery = "SELECT * FROM pessoa";
+                connec.ProcessarQuery(sqlQuery, ident);
+            }
+
         }
 
-       
+
     }
 }
