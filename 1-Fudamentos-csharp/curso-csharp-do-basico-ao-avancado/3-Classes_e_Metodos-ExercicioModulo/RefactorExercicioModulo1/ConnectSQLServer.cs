@@ -39,13 +39,16 @@ namespace RefactorExercicioModulo1
             }
             
       
-
-            using (SqlCommand command = new SqlCommand(query, conn))
+            if(ident == 0)
             {
-                command.ExecuteNonQuery();
-                Console.WriteLine("Query Executada.");
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("Query Executada.");
 
+                }
             }
+
 
             if (ident == 1)
             {
@@ -60,6 +63,16 @@ namespace RefactorExercicioModulo1
                         Console.Write(String.Format("ID {0} - ", reader[0]));
                         Console.Write(String.Format("NOME: {0}\n", reader[1]));
                     }
+                }
+            }
+
+            if(ident == 2)
+            {
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("Query Executada.");
+
                 }
             }
         }

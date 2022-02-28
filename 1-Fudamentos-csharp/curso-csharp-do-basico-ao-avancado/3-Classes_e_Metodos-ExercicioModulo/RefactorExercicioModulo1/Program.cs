@@ -60,7 +60,7 @@ namespace RefactorExercicioModulo1
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("******** | Bem-vindo | ******** ");
             Console.WriteLine("\n\n");
@@ -81,15 +81,17 @@ namespace RefactorExercicioModulo1
                     consultarPessoas();
                     break;
                 case 3:
-                    
+                    deletarPessoa();
                     break;
                 default:
                     Console.WriteLine("Opção inválida");
                     break;
             }
 
-            static void registrarNovaPessoa(){
-
+            static void registrarNovaPessoa()
+            {
+                Console.Clear();
+                Console.WriteLine("******** | CADASTRAR NOVA PESSOA | ******** ");
                 FichaPessoa pessoa = new FichaPessoa();
                 ValidadorDeDados validador = new ValidadorDeDados();
 
@@ -158,15 +160,35 @@ namespace RefactorExercicioModulo1
                 var ident = 0;
                 var connec = new ConnectSQLServer();         
                 connec.ProcessarQuery(sqlQuery, ident);
+                
 
             }
 
             static void consultarPessoas()
-            {          
+            {
+                Console.Clear();
+                Console.WriteLine("******** | CONSULTAR CADASTROS | ******** ");
                 var connec = new ConnectSQLServer();
                 int ident = 1;
                 string sqlQuery = "SELECT * FROM pessoa";
                 connec.ProcessarQuery(sqlQuery, ident);
+            }
+
+            static void deletarPessoa()
+            {
+                Console.Clear();
+                Console.WriteLine("******** | DELETAR CADASTRO | ******** ");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("Digite o Id da pessoa que deseja remover: ");
+                Console.ForegroundColor = ConsoleColor.White;
+                int idPessoa = int.Parse(Console.ReadLine());
+                var connec = new ConnectSQLServer();
+                int ident = 2;
+                string sqlQuery = $"DELETE FROM pessoa WHERE Id = {idPessoa}";
+                connec.ProcessarQuery(sqlQuery, ident);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("** SUCESSO ** CADASTRO REMOVIDO");
+                Console.ForegroundColor = ConsoleColor.White;
             }
 
         }
