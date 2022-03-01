@@ -32,7 +32,28 @@ namespace ConsoleApp1
             teste.Nome = "Ronaldo";
             teste.Idade = 21;
             Console.WriteLine(teste.Apresentar());
-      
+
+            var app = new Construtores();
+            app.Executar();
+
+            var calculadora = new CalculadoraComum();
+            int resultado;
+
+            resultado = calculadora.Somar(10, 10);
+            Console.WriteLine(resultado);
+
+            resultado = calculadora.Subtrair(10, 10);
+            Console.WriteLine(resultado);
+
+            resultado = calculadora.Multiplicar(10, 10);
+            Console.WriteLine(resultado);
+
+            var calculadoraCadeia = new CalculadoraCadeia();
+            calculadoraCadeia.Somar(3).Multiplicar(3).Imprimir().Limpar().Imprimir();
+
+            resultado = calculadoraCadeia.Somar(3).Multiplicar(2).Resultado();
+
+            Console.WriteLine(resultado);
         }
     }
 }

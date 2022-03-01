@@ -178,6 +178,7 @@ namespace RefactorExercicioModulo1
             {
                 Console.Clear();
                 Console.WriteLine("******** | DELETAR CADASTRO | ******** ");
+                Console.WriteLine("\n");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write("Digite o Id da pessoa que deseja remover: ");
                 Console.ForegroundColor = ConsoleColor.White;
