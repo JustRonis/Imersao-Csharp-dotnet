@@ -54,6 +54,8 @@ namespace ConsoleApp1
             resultado = calculadoraCadeia.Somar(3).Multiplicar(2).Resultado();
 
             Console.WriteLine(resultado);
+
+            AtributosEstaticos.Executar();
         }
     }
 }

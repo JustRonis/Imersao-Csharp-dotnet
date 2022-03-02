@@ -6,7 +6,24 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class MetodosEstaticos
+    public class CalculadoraEstatica
     {
+        public static int Somar(int a, int b)
+        {
+            return a + b;
+        }
+
+        public static int Multiplicar(int a, int b)
+        {
+            return a * b;
+        }
+    }
+    class MetodosEstaticos
+    {
+        public static void Executar()
+        { 
+        var resultado = CalculadoraEstatica.Multiplicar(2, 2);
+        }
+        
     }
 }
