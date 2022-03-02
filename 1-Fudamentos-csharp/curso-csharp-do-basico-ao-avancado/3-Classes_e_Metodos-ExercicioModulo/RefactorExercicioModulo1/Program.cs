@@ -154,12 +154,8 @@ namespace RefactorExercicioModulo1
 
                 string sqlQuery = strBuilder.ToString();
 
-                Console.WriteLine(sqlQuery);
-                Console.ReadKey();
-
-                var InserirSql = new ProcessQuery(sqlQuery);    
-                
-
+                var Consultar = new ProcessQuery(sqlQuery);
+                Consultar.Inserir();
             }
 
             static void consultarPessoas()

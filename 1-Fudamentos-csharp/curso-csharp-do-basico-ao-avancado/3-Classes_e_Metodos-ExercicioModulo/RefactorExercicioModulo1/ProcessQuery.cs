@@ -18,18 +18,14 @@ namespace RefactorExercicioModulo1
 
         public void Inserir()
         {
-            ConnectSQLServer.Connect();
-            using (SqlCommand command = new SqlCommand(Query))
-            {
-                command.ExecuteNonQuery();
-            }
+            SqlCommand command = new SqlCommand(Query, ConnectSQLServer.Connect());
+            command.ExecuteNonQuery();
         }
 
         public void Consultar()
         {
 
             SqlCommand command = new SqlCommand(Query,ConnectSQLServer.Connect());
-            Console.WriteLine(Query);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
