@@ -81,7 +81,7 @@ namespace RefactorExercicioModulo1
                     consultarPessoas();
                     break;
                 case 3:
-                    //deletarPessoa();
+                    deletarPessoa();
                     break;
                 default:
                     Console.WriteLine("Opção inválida");
@@ -167,23 +167,23 @@ namespace RefactorExercicioModulo1
                 Consultar.Consultar();
             }
 
-            //static void deletarPessoa()
-            //{
-            //    Console.Clear();
-            //    Console.WriteLine("******** | DELETAR CADASTRO | ******** ");
-            //    Console.WriteLine("\n");
-            //    Console.ForegroundColor = ConsoleColor.Red;
-            //    Console.Write("Digite o Id da pessoa que deseja remover: ");
-            //    Console.ForegroundColor = ConsoleColor.White;
-            //    int idPessoa = int.Parse(Console.ReadLine());
-            //    var connec = new ConnectSQLServer();
-            //    int ident = 2;
-            //    string sqlQuery = $"DELETE FROM pessoa WHERE Id = {idPessoa}";
-            //    connec.ProcessarQuery(sqlQuery, ident);
-            //    Console.ForegroundColor = ConsoleColor.Red;
-            //    Console.WriteLine("** SUCESSO ** CADASTRO REMOVIDO");
-            //    Console.ForegroundColor = ConsoleColor.White;
-            //}
+            static void deletarPessoa()
+            {
+                Console.Clear();
+                Console.WriteLine("******** | DELETAR CADASTRO | ******** ");
+                Console.WriteLine("\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("Digite o Id da pessoa que deseja remover: ");
+                Console.ForegroundColor = ConsoleColor.White;
+                int idPessoa = int.Parse(Console.ReadLine());
+             
+                string sqlQuery = $"DELETE FROM pessoa WHERE Id = {idPessoa}";
+                var Consultar = new ProcessQuery(sqlQuery);
+                Consultar.Deletar();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("** SUCESSO ** CADASTRO REMOVIDO");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
 
         }
 

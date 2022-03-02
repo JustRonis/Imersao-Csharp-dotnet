@@ -35,5 +35,11 @@ namespace RefactorExercicioModulo1
 
         }
 
+        public void Deletar()
+        {
+            SqlCommand command = new SqlCommand(Query, ConnectSQLServer.Connect());
+            command.ExecuteNonQuery();
+        }
+
     }
 }
