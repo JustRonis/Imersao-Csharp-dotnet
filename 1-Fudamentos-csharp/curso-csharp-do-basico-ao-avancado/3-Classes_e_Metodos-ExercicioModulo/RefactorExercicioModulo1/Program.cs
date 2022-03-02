@@ -154,8 +154,8 @@ namespace RefactorExercicioModulo1
 
                 string sqlQuery = strBuilder.ToString();
 
-                var Consultar = new ProcessQuery(sqlQuery);
-                Consultar.Inserir();
+                var inserir = new ProcessQuery(sqlQuery);
+                inserir.Inserir();
             }
 
             static void consultarPessoas()
@@ -178,8 +178,8 @@ namespace RefactorExercicioModulo1
                 int idPessoa = int.Parse(Console.ReadLine());
              
                 string sqlQuery = $"DELETE FROM pessoa WHERE Id = {idPessoa}";
-                var Consultar = new ProcessQuery(sqlQuery);
-                Consultar.Deletar();
+                var deletar = new ProcessQuery(sqlQuery);
+                deletar.Deletar();
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("** SUCESSO ** CADASTRO REMOVIDO");
                 Console.ForegroundColor = ConsoleColor.White;
