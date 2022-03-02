@@ -22,7 +22,6 @@ namespace RefactorExercicioModulo1
             try
             {
                 conn.Open();
-                Console.WriteLine("Conexão inicializada");
             }
             catch (Exception e)
             {
