@@ -10,7 +10,7 @@ namespace RefactorExercicioModulo1
 {
     public static class ConnectSQLServer
     {
-        public static SqlConnection Connect()
+        public static SqlConnection Connect(int ident)
         {
             var server = @"DESKTOP-1J31FV2\SQLEXPRESS";
             var database = "FichaPessoa";
@@ -19,6 +19,8 @@ namespace RefactorExercicioModulo1
 
             string connString = @"Data Source=" + server + ";Initial Catalog=" + database + ";Persist Security Info=True;User ID=" + username + ";Password=" + password;
             SqlConnection conn = new SqlConnection(connString);
+            
+            if(ident == 1)
             try
             {
                 conn.Open();
@@ -27,9 +29,21 @@ namespace RefactorExercicioModulo1
             {
                 Console.WriteLine("Erro: " + e.Message);
             }
-            return conn;
-        }
+
+            if(ident == 0)
+            try
+            {
+                conn.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro: " + e.Message);
+            }
         
+            return conn;
+
+        }
+                
     }
 }
 

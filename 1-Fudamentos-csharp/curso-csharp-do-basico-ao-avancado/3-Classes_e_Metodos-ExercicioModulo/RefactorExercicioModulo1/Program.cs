@@ -151,9 +151,7 @@ namespace RefactorExercicioModulo1
                 StringBuilder strBuilder = new StringBuilder();
                 strBuilder.Append("INSERT INTO Pessoa(nome, idade, sexo, nomeMae, nomePai, numeroRg, numeroCpf) VALUES");
                 strBuilder.Append($"('{pessoa.Nome}',{pessoa.Idade},'{pessoa.Sexo}','{pessoa.NomeMae}','{pessoa.NomePai}','{pessoa.Rg}','{pessoa.Cpf}')");
-
                 string sqlQuery = strBuilder.ToString();
-
                 var inserir = new ProcessQuery(sqlQuery);
                 inserir.Inserir();
             }
@@ -183,6 +181,7 @@ namespace RefactorExercicioModulo1
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("** SUCESSO ** CADASTRO REMOVIDO");
                 Console.ForegroundColor = ConsoleColor.White;
+
             }
 
         }
