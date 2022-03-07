@@ -17,6 +17,8 @@ namespace RefactorExercicioModulo1
         public string NomePai { get; set; }
         public string Cpf { get; set; }
         public int Identificador { get; set; }
+
+        public string Senha { get; set; }
    
 
     }

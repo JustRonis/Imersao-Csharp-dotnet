@@ -54,6 +54,7 @@ Determinida ação escolhida, deve reflir na base de dados
 
 using System;
 using System.Data.SqlClient;
+using System.Security;
 using System.Text;
 
 namespace RefactorExercicioModulo1
@@ -62,7 +63,19 @@ namespace RefactorExercicioModulo1
     {
         static void Main()
         {
-            Console.WriteLine("******** | Bem-vindo | ******** ");
+            //ConsoleSpinner spinner = new ConsoleSpinner();
+            //spinner.Delay = 300;
+            //while (true)
+            //{
+            //    spinner.Turn(displayMsg: "Processando ", sequenceCode: 4);
+            //}
+
+
+        }
+
+        static void MenuAdm()
+        {
+            Console.WriteLine("******** | Bem-vindo - ADMINISTRADOR | ******** ");
             Console.WriteLine("\n\n");
             Console.WriteLine("Selecione a opção desejada:");
             Console.WriteLine("1) Registrar uma nova pessoa");
@@ -87,6 +100,10 @@ namespace RefactorExercicioModulo1
                     Console.WriteLine("Opção inválida");
                     break;
             }
+        }
+        static void MenuPessoa()
+        {
+            Console.WriteLine("******** | Bem-vindo ao pior banco do mundo | ******** ");
         }
         static void registrarNovaPessoa()
         {
@@ -132,7 +149,6 @@ namespace RefactorExercicioModulo1
             {
                 Console.Write("Nome Pai: ");
                 pessoa.NomePai = Console.ReadLine();
-                validador.ValidaNome(pessoa.NomePai);
             } while (!validador.ValidaNome(pessoa.NomePai));
 
             do
@@ -143,19 +159,42 @@ namespace RefactorExercicioModulo1
 
             pessoa.Identificador = int.Parse(pessoa.Cpf.Substring(0, 3));
 
-
             StringBuilder strBuilder = new StringBuilder();
-            strBuilder.Append("INSERT INTO Pessoa(nome, idade, sexo, nomeMae, nomePai, numeroCpf, identificador) VALUES");
-            strBuilder.Append($"('{pessoa.Nome}',{pessoa.Idade},'{pessoa.Sexo}','{pessoa.NomeMae}','{pessoa.NomePai}','{pessoa.Cpf}','{pessoa.Identificador}')");
+
+            Console.WriteLine("\n******** | AGUARDE | ******** ");
+            System.Threading.Thread.Sleep(3000);
+            Console.Clear();
+            Console.WriteLine("\n");
+            Console.WriteLine(" ******** | SEUS DADOS FORAM APROVADOS | ******** ");
+            Console.WriteLine("\n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Seu identificador é: {0}", pessoa.Identificador);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\n");
+            var senha = "";
+            do
+            {
+                senha = CriarSenha.Criar();
+            } while (!CriarSenha.ValidarSenha(senha));
+            pessoa.Senha = senha;
+
+            Console.Clear();
+            System.Threading.Thread.Sleep(1500);
+            Console.Write(" ******** | SENHA CRIADA COM SUCESSO -");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(" CADASTRO APROVADO E ATIVO ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("| ******** ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n\nLEMBRE-SE: Seu identificador é: {0}", pessoa.Identificador);
+            Console.ForegroundColor = ConsoleColor.White;
+
+            strBuilder.Append("INSERT INTO Pessoa(nome, idade, sexo, nomeMae, nomePai, numeroCpf, identificador, senha) VALUES");
+            strBuilder.Append($"('{pessoa.Nome}',{pessoa.Idade},'{pessoa.Sexo}','{pessoa.NomeMae}','{pessoa.NomePai}','{pessoa.Cpf}','{pessoa.Identificador}','{pessoa.Senha}')");
             string sqlQuery = strBuilder.ToString();
             var inserir = new ProcessQuery(sqlQuery);
             inserir.Inserir();
 
-
-        }
-
-        static void CriarAcesso()
-        {
 
         }
 
