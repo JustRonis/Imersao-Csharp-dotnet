@@ -56,6 +56,8 @@ namespace ConsoleApp1
             Console.WriteLine(resultado);
 
             AtributosEstaticos.Executar();
+
+            Desafio.Executar();
         }
     }
 }

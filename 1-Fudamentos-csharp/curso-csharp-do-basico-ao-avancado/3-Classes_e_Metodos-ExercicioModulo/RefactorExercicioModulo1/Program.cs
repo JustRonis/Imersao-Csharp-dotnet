@@ -87,104 +87,106 @@ namespace RefactorExercicioModulo1
                     Console.WriteLine("Opção inválida");
                     break;
             }
+        }
+        static void registrarNovaPessoa()
+        {
+            Console.Clear();
+            Console.WriteLine("******** | CADASTRAR NOVA PESSOA | ******** ");
+            FichaPessoa pessoa = new FichaPessoa();
+            ValidadorDeDados validador = new ValidadorDeDados();
 
-            static void registrarNovaPessoa()
+            do
             {
-                Console.Clear();
-                Console.WriteLine("******** | CADASTRAR NOVA PESSOA | ******** ");
-                FichaPessoa pessoa = new FichaPessoa();
-                ValidadorDeDados validador = new ValidadorDeDados();
+                Console.Write("Nome: ");
+                pessoa.Nome = Console.ReadLine();
+            } while (!validador.ValidaNome(pessoa.Nome));
 
-                do
+            do
+            {
+                try
                 {
-                    Console.Write("Nome: ");
-                    pessoa.Nome = Console.ReadLine();
-                } while (!validador.ValidaNome(pessoa.Nome));
-
-                do
+                    Console.Write("Idade: ");
+                    pessoa.Idade = int.Parse(Console.ReadLine());
+                }
+                catch
                 {
-                    try
-                    {
-                        Console.Write("Idade: ");
-                        pessoa.Idade = int.Parse(Console.ReadLine());
-                    }
-                    catch
-                    {
-                        
-                    }
 
-                } while (!validador.ValidaIdade(pessoa.Idade));
+                }
 
-                do
-                {
-                    Console.Write("Sexo: ");
-                    pessoa.Sexo = Console.ReadLine();
-                } while (!validador.ValidaSexo(pessoa.Sexo));
+            } while (!validador.ValidaIdade(pessoa.Idade));
+
+            do
+            {
+                Console.Write("Sexo: ");
+                pessoa.Sexo = Console.ReadLine();
+            } while (!validador.ValidaSexo(pessoa.Sexo));
 
 
-                do
-                {
-                    Console.Write("Nome Mae: ");
-                    pessoa.NomeMae = Console.ReadLine();
-                } while (!validador.ValidaNome(pessoa.NomeMae));
+            do
+            {
+                Console.Write("Nome Mae: ");
+                pessoa.NomeMae = Console.ReadLine();
+            } while (!validador.ValidaNome(pessoa.NomeMae));
 
-                do
-                {
-                    Console.Write("Nome Pai: ");
-                    pessoa.NomePai = Console.ReadLine();
-                    validador.ValidaNome(pessoa.NomePai);
-                } while (!validador.ValidaNome(pessoa.NomePai));
+            do
+            {
+                Console.Write("Nome Pai: ");
+                pessoa.NomePai = Console.ReadLine();
+                validador.ValidaNome(pessoa.NomePai);
+            } while (!validador.ValidaNome(pessoa.NomePai));
 
-                do
-                {
-                    Console.Write("Numero RG: ");
-                    pessoa.Rg = Console.ReadLine();
-                } while (!validador.ValidaRg(pessoa.Rg));
-
-                do
-                {
+            do
+            {
                 Console.Write("Numero CPF: ");
                 pessoa.Cpf = Console.ReadLine();
-                } while (!validador.ValidaCpf(pessoa.Cpf));
+            } while (!validador.ValidaCpf(pessoa.Cpf));
+
+            pessoa.Identificador = int.Parse(pessoa.Cpf.Substring(0, 3));
 
 
-                StringBuilder strBuilder = new StringBuilder();
-                strBuilder.Append("INSERT INTO Pessoa(nome, idade, sexo, nomeMae, nomePai, numeroRg, numeroCpf) VALUES");
-                strBuilder.Append($"('{pessoa.Nome}',{pessoa.Idade},'{pessoa.Sexo}','{pessoa.NomeMae}','{pessoa.NomePai}','{pessoa.Rg}','{pessoa.Cpf}')");
-                string sqlQuery = strBuilder.ToString();
-                var inserir = new ProcessQuery(sqlQuery);
-                inserir.Inserir();
-            }
+            StringBuilder strBuilder = new StringBuilder();
+            strBuilder.Append("INSERT INTO Pessoa(nome, idade, sexo, nomeMae, nomePai, numeroCpf, identificador) VALUES");
+            strBuilder.Append($"('{pessoa.Nome}',{pessoa.Idade},'{pessoa.Sexo}','{pessoa.NomeMae}','{pessoa.NomePai}','{pessoa.Cpf}','{pessoa.Identificador}')");
+            string sqlQuery = strBuilder.ToString();
+            var inserir = new ProcessQuery(sqlQuery);
+            inserir.Inserir();
 
-            static void consultarPessoas()
-            {
-                Console.Clear();
-                Console.WriteLine("******** | CONSULTAR CADASTROS | ******** ");
-                string sqlQuery = "SELECT * FROM pessoa";
-                var Consultar = new ProcessQuery(sqlQuery);
-                Consultar.Consultar();
-            }
-
-            static void deletarPessoa()
-            {
-                Console.Clear();
-                Console.WriteLine("******** | DELETAR CADASTRO | ******** ");
-                Console.WriteLine("\n");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write("Digite o Id da pessoa que deseja remover: ");
-                Console.ForegroundColor = ConsoleColor.White;
-                int idPessoa = int.Parse(Console.ReadLine());
-             
-                string sqlQuery = $"DELETE FROM pessoa WHERE Id = {idPessoa}";
-                var deletar = new ProcessQuery(sqlQuery);
-                deletar.Deletar();
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("** SUCESSO ** CADASTRO REMOVIDO");
-                Console.ForegroundColor = ConsoleColor.White;
-
-            }
 
         }
+
+        static void CriarAcesso()
+        {
+
+        }
+
+        static void consultarPessoas()
+        {
+            Console.Clear();
+            Console.WriteLine("******** | CONSULTAR CADASTROS | ******** ");
+            string sqlQuery = "SELECT * FROM pessoa";
+            var Consultar = new ProcessQuery(sqlQuery);
+            Consultar.Consultar();
+        }
+
+        static void deletarPessoa()
+        {
+            Console.Clear();
+            Console.WriteLine("******** | DELETAR CADASTRO | ******** ");
+            Console.WriteLine("\n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("Digite o Id da pessoa que deseja remover: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            int idPessoa = int.Parse(Console.ReadLine());
+
+            string sqlQuery = $"DELETE FROM pessoa WHERE Id = {idPessoa}";
+            var deletar = new ProcessQuery(sqlQuery);
+            deletar.Deletar();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("** SUCESSO ** CADASTRO REMOVIDO");
+            Console.ForegroundColor = ConsoleColor.White;
+
+        }
+
 
 
     }

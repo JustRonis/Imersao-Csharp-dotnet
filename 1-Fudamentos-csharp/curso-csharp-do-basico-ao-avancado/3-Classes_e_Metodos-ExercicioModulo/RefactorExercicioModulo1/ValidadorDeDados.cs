@@ -84,33 +84,6 @@ namespace RefactorExercicioModulo1
 
         }
 
-        public bool ValidaRg(string rg)
-        {
-            if (string.IsNullOrEmpty(rg))
-            {
-                Console.WriteLine("\t");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("** Erro ** - Campo RG não pode ser vazio");
-                Console.WriteLine("\t");
-                Console.ForegroundColor = ConsoleColor.White;
-                System.Threading.Thread.Sleep(2000);
-                return false;
-            }
-            if (Regex.IsMatch(rg, @"(^\d{1,2}).?(\d{3}).?(\d{3})-?(\d{1}|X|x$)"))
-            {
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("\t");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("** Erro ** - RG Preenchido errado - Preencha seguindo o exemplo: (99.999.999-0) ou (99999999X)");
-                Console.ForegroundColor = ConsoleColor.White;
-                System.Threading.Thread.Sleep(2000);
-                return false;
-            }
-        }
-
         public bool ValidaCpf(string cpf)
         {
             if (string.IsNullOrEmpty(cpf))
