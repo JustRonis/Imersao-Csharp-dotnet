@@ -119,10 +119,10 @@ namespace RefactorExercicioModulo1
                     menuDepositar(nome, saldo, identificador);
                     break;
                 case 2:
-                    //MenuTransferir(nome, saldo, identificador);
+                    menuTransferir(nome, saldo, identificador);
                     break;
                 case 3:
-                    //MenuSacar(nome, saldo, identificador);
+                    menuSacar(nome, saldo, identificador);
                     break;
 
             }
@@ -130,7 +130,7 @@ namespace RefactorExercicioModulo1
         static void menuDepositar(string nome, float saldo, int identificador)
         {
             Console.Clear();
-            Console.WriteLine("******** | Depositar | ******** \n\n");
+            Console.WriteLine("******** | DEPOSITAR | ******** \n\n");
             Console.WriteLine("{0}, seu saldo é: R$ {1}\n\n", nome, saldo);
             Console.Write("Valor que deseja depositar: ");
             float inputValorDepsito = float.Parse(Console.ReadLine());
@@ -138,6 +138,7 @@ namespace RefactorExercicioModulo1
             string sqlQuery = $"UPDATE pessoa SET saldo = {saldo} WHERE identificador = {identificador}";
             var Consultar = new ProcessQuery(sqlQuery);
             Consultar.Inserir();
+
 
             ConsoleSpinner spinner = new ConsoleSpinner();
             spinner.Delay = 500;
@@ -152,6 +153,81 @@ namespace RefactorExercicioModulo1
             Console.Write(" ******** |");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write(" DEPOSITO REALIZADO COM SUCESSO ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("| ******** \n\n");
+            Console.WriteLine("{0}, seu saldo atual é: R$: {1}\n\n", nome, saldo);
+
+
+        }
+        static void menuSacar(string nome, float saldo, int identificador)
+        {
+            Console.Clear();
+            Console.WriteLine("******** | SACAR | ******** \n\n");
+            Console.WriteLine("{0}, seu saldo é: R$ {1}\n\n", nome, saldo);
+            Console.Write("Valor que deseja sacar: ");
+            float inputValorDepsito = float.Parse(Console.ReadLine());
+            saldo = saldo -= inputValorDepsito;
+            string sqlQuery = $"UPDATE pessoa SET saldo = {saldo} WHERE identificador = {identificador}";
+            var Consultar = new ProcessQuery(sqlQuery);
+            Consultar.Inserir();
+
+            ConsoleSpinner spinner = new ConsoleSpinner();
+            spinner.Delay = 500;
+            int cont = 0;
+            while (cont <= 10)
+            {
+                spinner.Turn(displayMsg: "Sacando ", sequenceCode: 4);
+                cont++;
+
+            }
+            Console.Clear();
+            Console.Write(" ******** |");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(" SAQUE REALIZADO COM SUCESSO ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("| ******** \n\n");
+            Console.WriteLine("{0}, seu saldo atual é: R$: {1}\n\n", nome, saldo);
+
+
+        }
+        static void menuTransferir(string nome, float saldo, int identificador)
+        {
+            Console.Clear();
+            Console.WriteLine("******** | TRANSFERIR | ******** \n\n");
+            Console.WriteLine("{0}, seu saldo é: R$ {1}\n\n", nome, saldo);
+            Console.Write("Valor que deseja transferir: ");
+            float inputValorTransferencia = float.Parse(Console.ReadLine());
+            Console.Write("Identificador de quem voce deseja transferir: ");
+            int inputDestinatario = int.Parse(Console.ReadLine());
+            
+            saldo = saldo -= inputValorTransferencia;
+            string sqlQuery = $"UPDATE pessoa SET saldo = {saldo} WHERE identificador = {identificador}";
+            var Consultar = new ProcessQuery(sqlQuery);
+            Consultar.Inserir();
+
+            string sqlQueryDois = $"SELECT * FROM pessoa where identificador = {inputDestinatario}";
+            var ConsultarDois = new ProcessQuery(sqlQueryDois);
+            float saldoDestinatario = ConsultarDois.RetornarPessoaSaldo();
+
+            saldoDestinatario += inputValorTransferencia;
+            var sqlQueryTres = $"UPDATE pessoa SET saldo = {saldoDestinatario} WHERE identificador = {inputDestinatario}";
+            var ConsultarTres = new ProcessQuery(sqlQueryTres);
+            ConsultarTres.Inserir();
+
+
+            ConsoleSpinner spinner = new ConsoleSpinner();
+            spinner.Delay = 500;
+            int cont = 0;
+            while (cont <= 10)
+            {
+                spinner.Turn(displayMsg: "Transferindo ", sequenceCode: 4);
+                cont++;
+
+            }
+            Console.Clear();
+            Console.Write(" ******** |");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(" TRANSFERENCIA REALIZADA COM SUCESSO ");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("| ******** \n\n");
             Console.WriteLine("{0}, seu saldo atual é: R$: {1}\n\n", nome, saldo);
