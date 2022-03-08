@@ -45,5 +45,32 @@ namespace RefactorExercicioModulo1
             ConnectSQLServer.Connect(0);
         }
 
+        public bool ConsultarSenha()
+        {
+
+            SqlCommand command = new SqlCommand(Query, ConnectSQLServer.Connect(1));
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.HasRows)
+            {
+                return true;
+            }
+            else
+            {
+                
+                return false;
+            }
+            //try
+            //{
+            //    SqlCommand command = new SqlCommand(Query, ConnectSQLServer.Connect(1));
+            //    ConnectSQLServer.Connect(0);
+            //    return true;
+            //}
+            //catch
+            //{
+            //    Console.WriteLine("** Erro **  - Encerrando");
+            //    return false;
+            //}
+
+        }
     }
 }

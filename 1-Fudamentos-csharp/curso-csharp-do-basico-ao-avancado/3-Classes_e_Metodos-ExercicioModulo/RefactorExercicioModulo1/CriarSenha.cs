@@ -13,7 +13,7 @@ namespace RefactorExercicioModulo1
         {
             ConsoleKeyInfo keyInfo;
             var password = "";
-            Console.Write("Digite sua nova senha: ");
+            Console.Write("Digite sua senha: ");
             do
             {
                 keyInfo = Console.ReadKey(true);

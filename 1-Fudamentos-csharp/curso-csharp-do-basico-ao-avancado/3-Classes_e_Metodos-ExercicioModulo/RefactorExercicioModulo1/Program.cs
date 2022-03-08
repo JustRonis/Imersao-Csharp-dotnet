@@ -1,58 +1,4 @@
-﻿/*
-
-1º
-Criar um novo projeto console .net core 5.0  (Conhecimento de plataforma)
-------------------------------------------------------------------------------------------------------------------------------------------------------
-2º
-
-Criar uma classe que recebe a ficha de uma pessoa  
-
-Nome;
-Idade;
-Sexo;
-Mae;
-Pai;
-RG;
-CPF;
-------------------------------------------------------------------------------------------------------------------------------------------------------
-3º
-Ao instanciar a classe da ficha, os dados inseridos devem ser persistidos no banco de dados SQL Server
-
-
-
-4º
-Criar um metodo que realize o processamento com base nos dados preenchidos na ficha
-
-Se Alguma informação estiver vázia(exceto nomes dos pais), reiniciar o preenchimento da ficha e exibir uma mensagem de erro
-------------------------------------------------------------------------------------------------------------------------------------------------------
-Certificar todas as inciais do [nome] comecem com letra maiscula  
-------------------------------------------------------------------------------------------------------------------------------------------------------
-Se a idade for maior que 18 - Pode tirar habilitação;
-Se o sexo for masculino - Apresentação obrigatória no exercito;
-------------------------------------------------------------------------------------------------------------------------------------------------------
-Se o nome do pai e da mãe forem declarados = Pais presente
-Se o nome da mãe mas não do pai for declarado = Mae presente, Pai ausente
-Se o nome do pai mas não da mãe for declarado = Pai presente, Mae ausente
-Se nem o nome da mãe nem do pai forem declarados = Orfão;
-------------------------------------------------------------------------------------------------------------------------------------------------------
-Idade + 10 = Idade daqui 10 anos
-Idade / decadas vividas = Decadas vividas
-------------------------------------------------------------------------------------------------------------------------------------------------------
-Some + 1 no último número do cpf;
-------------------------------------------------------------------------------------------------------------------------------------------------------
-
-Criar um menu que inicializa junto com o programa, que fornece as seguintes opções:
-
-1- Registrar uma nova pessoa
-2- Consultar pessoas registradas
-3- Deletar uma pessoa
-
-Determinida ação escolhida, deve reflir na base de dados
-
-*/
-
-
-using System;
+﻿using System;
 using System.Data.SqlClient;
 using System.Security;
 using System.Text;
@@ -63,6 +9,27 @@ namespace RefactorExercicioModulo1
     {
         static void Main()
         {
+
+            Console.WriteLine("******** | Bem-vindo  | ******** \n\n");
+            Console.WriteLine("Escolha uma opção abaixo: \n");
+            Console.WriteLine("1) Usuario");
+            Console.WriteLine("2) Administrador\n");
+            Console.Write("Digite: ");
+            int choiceMenu = int.Parse(Console.ReadLine());
+
+            if(choiceMenu == 1)
+            {
+                pessoaLogin();
+            } 
+            else if(choiceMenu == 2)
+            {
+                menuAdm();
+            }
+            else
+            {
+                Console.WriteLine("Opção inválida");
+            }
+
             //ConsoleSpinner spinner = new ConsoleSpinner();
             //spinner.Delay = 300;
             //while (true)
@@ -73,8 +40,9 @@ namespace RefactorExercicioModulo1
 
         }
 
-        static void MenuAdm()
+        static void menuAdm()
         {
+            Console.Clear();
             Console.WriteLine("******** | Bem-vindo - ADMINISTRADOR | ******** ");
             Console.WriteLine("\n\n");
             Console.WriteLine("Selecione a opção desejada:");
@@ -101,9 +69,45 @@ namespace RefactorExercicioModulo1
                     break;
             }
         }
-        static void MenuPessoa()
+
+
+
+        static void pessoaLogin()
         {
-            Console.WriteLine("******** | Bem-vindo ao pior banco do mundo | ******** ");
+            Console.Clear();
+            Console.WriteLine("******** | Usuário Login | ******** \n\n");
+            Console.Write("Identificador: ");
+            int inputIdentificador = int.Parse(Console.ReadLine());
+            var inputSenha = "";
+            inputSenha = CriarSenha.Criar();
+            string sqlQuery = $"SELECT * FROM pessoa where identificador = {inputIdentificador} and senha = '{inputSenha}'";
+            var Consultar = new ProcessQuery(sqlQuery);
+            System.Threading.Thread.Sleep(700);
+            if (Consultar.ConsultarSenha() == true)
+            {
+                menuPessoa();
+            }   
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\n\n** Erro **  - Senha ou identificador inválido - Encerrando sessão");
+                Console.ForegroundColor = ConsoleColor.White;
+                Environment.Exit(1);
+            }
+
+
+
+        }
+        static void menuPessoa()
+        {
+            Console.Clear();
+            Console.WriteLine("******** | Bem-vindo ao pior banco do mundo | ******** \n\n");
+            Console.WriteLine("Escolha uma opção abaixo: \n");
+            Console.WriteLine("1) Depositar");
+            Console.WriteLine("1) Transeferir");
+            Console.WriteLine("2) Sacar\n");
+            Console.WriteLine("Nome seu saldo é: ");
+
         }
         static void registrarNovaPessoa()
         {
