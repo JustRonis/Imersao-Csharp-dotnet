@@ -85,7 +85,11 @@ namespace RefactorExercicioModulo1
             System.Threading.Thread.Sleep(700);
             if (Consultar.FazerLogin() == true)
             {
-                menuPessoa();
+
+                string nome = Consultar.RetornarPessoaNome();
+                float saldo = Consultar.RetornarPessoaSaldo();               
+                menuPessoa(nome, saldo);
+     
             }   
             else
             {
@@ -98,7 +102,7 @@ namespace RefactorExercicioModulo1
 
 
         }
-        static void menuPessoa()
+        static void menuPessoa(string nome, float saldo)
         {
             Console.Clear();
             Console.WriteLine("******** | Bem-vindo ao pior banco do mundo | ******** \n\n");
@@ -106,7 +110,7 @@ namespace RefactorExercicioModulo1
             Console.WriteLine("1) Depositar");
             Console.WriteLine("1) Transeferir");
             Console.WriteLine("2) Sacar\n");
-            Console.WriteLine("Nome seu saldo é: ");
+            Console.WriteLine("{0}, seu saldo é: {1}", nome, saldo);
 
         }
         static void registrarNovaPessoa()

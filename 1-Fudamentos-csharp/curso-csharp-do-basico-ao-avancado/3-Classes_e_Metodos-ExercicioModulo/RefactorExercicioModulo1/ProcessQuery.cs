@@ -70,7 +70,28 @@ namespace RefactorExercicioModulo1
             //    Console.WriteLine("** Erro **  - Encerrando");
             //    return false;
             //}
+        }
 
+        public string RetornarPessoaNome()
+        {
+            SqlCommand command = new SqlCommand(Query, ConnectSQLServer.Connect(1));
+            SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+
+            string nome = (string)reader[1];
+            ConnectSQLServer.Connect(0);
+            return nome;     
+        }
+
+        public float RetornarPessoaSaldo()
+        {
+            SqlCommand command = new SqlCommand(Query, ConnectSQLServer.Connect(1));
+            SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+
+            float saldo = Convert.ToSingle(reader[9]);
+            ConnectSQLServer.Connect(0);
+            return saldo;
         }
     }
 }
