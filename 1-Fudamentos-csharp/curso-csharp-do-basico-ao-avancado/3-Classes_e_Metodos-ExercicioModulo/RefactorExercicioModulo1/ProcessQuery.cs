@@ -45,7 +45,7 @@ namespace RefactorExercicioModulo1
             ConnectSQLServer.Connect(0);
         }
 
-        public bool ConsultarSenha()
+        public bool FazerLogin()
         {
 
             SqlCommand command = new SqlCommand(Query, ConnectSQLServer.Connect(1));

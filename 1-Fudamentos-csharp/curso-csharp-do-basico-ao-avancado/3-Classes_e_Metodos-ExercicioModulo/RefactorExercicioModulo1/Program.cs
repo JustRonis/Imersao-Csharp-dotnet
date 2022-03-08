@@ -83,7 +83,7 @@ namespace RefactorExercicioModulo1
             string sqlQuery = $"SELECT * FROM pessoa where identificador = {inputIdentificador} and senha = '{inputSenha}'";
             var Consultar = new ProcessQuery(sqlQuery);
             System.Threading.Thread.Sleep(700);
-            if (Consultar.ConsultarSenha() == true)
+            if (Consultar.FazerLogin() == true)
             {
                 menuPessoa();
             }   
@@ -192,9 +192,9 @@ namespace RefactorExercicioModulo1
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\n\nLEMBRE-SE: Seu identificador é: {0}", pessoa.Identificador);
             Console.ForegroundColor = ConsoleColor.White;
-
-            strBuilder.Append("INSERT INTO Pessoa(nome, idade, sexo, nomeMae, nomePai, numeroCpf, identificador, senha) VALUES");
-            strBuilder.Append($"('{pessoa.Nome}',{pessoa.Idade},'{pessoa.Sexo}','{pessoa.NomeMae}','{pessoa.NomePai}','{pessoa.Cpf}','{pessoa.Identificador}','{pessoa.Senha}')");
+            pessoa.Saldo = 0;
+            strBuilder.Append("INSERT INTO Pessoa(nome, idade, sexo, nomeMae, nomePai, numeroCpf, identificador, senha, saldo) VALUES");
+            strBuilder.Append($"('{pessoa.Nome}',{pessoa.Idade},'{pessoa.Sexo}','{pessoa.NomeMae}','{pessoa.NomePai}','{pessoa.Cpf}','{pessoa.Identificador}','{pessoa.Senha}','{pessoa.Saldo}')");
             string sqlQuery = strBuilder.ToString();
             var inserir = new ProcessQuery(sqlQuery);
             inserir.Inserir();
