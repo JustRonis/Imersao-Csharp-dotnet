@@ -11,7 +11,7 @@ namespace RefactorExercicioModulo1
     {
         static string[,] sequence = null;
 
-        public int Delay { get; set; } = 200;
+        public int Delay { get; set; } 
 
         int totalSequences = 0;
         int counter;
@@ -38,7 +38,7 @@ namespace RefactorExercicioModulo1
         {
             counter++;
 
-            Thread.Sleep(Delay);
+            System.Threading.Thread.Sleep(Delay);
 
             sequenceCode = sequenceCode > totalSequences - 1 ? 0 : sequenceCode;
 

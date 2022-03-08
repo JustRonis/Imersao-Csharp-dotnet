@@ -93,5 +93,16 @@ namespace RefactorExercicioModulo1
             ConnectSQLServer.Connect(0);
             return saldo;
         }
+
+        public int RetornarPessoaIdentificador()
+        {
+            SqlCommand command = new SqlCommand(Query, ConnectSQLServer.Connect(1));
+            SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+
+            int identificador = (int)reader[7];
+            ConnectSQLServer.Connect(0);
+            return identificador;
+        }
     }
 }

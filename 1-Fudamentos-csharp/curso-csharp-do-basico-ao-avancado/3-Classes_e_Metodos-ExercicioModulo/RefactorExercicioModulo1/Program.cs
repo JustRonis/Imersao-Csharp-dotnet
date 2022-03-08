@@ -87,8 +87,9 @@ namespace RefactorExercicioModulo1
             {
 
                 string nome = Consultar.RetornarPessoaNome();
-                float saldo = Consultar.RetornarPessoaSaldo();               
-                menuPessoa(nome, saldo);
+                float saldo = Consultar.RetornarPessoaSaldo();
+                int identificador = Consultar.RetornarPessoaIdentificador();
+                menuPessoa(nome, saldo, identificador);
      
             }   
             else
@@ -102,15 +103,59 @@ namespace RefactorExercicioModulo1
 
 
         }
-        static void menuPessoa(string nome, float saldo)
+        static void menuPessoa(string nome, float saldo, int identificador)
         {
             Console.Clear();
             Console.WriteLine("******** | Bem-vindo ao pior banco do mundo | ******** \n\n");
             Console.WriteLine("Escolha uma opção abaixo: \n");
             Console.WriteLine("1) Depositar");
-            Console.WriteLine("1) Transeferir");
-            Console.WriteLine("2) Sacar\n");
-            Console.WriteLine("{0}, seu saldo é: {1}", nome, saldo);
+            Console.WriteLine("2) Transferir");
+            Console.WriteLine("3) Sacar\n");
+            Console.Write("Digite: ");
+            int choiceMenu = int.Parse(Console.ReadLine());
+            switch (choiceMenu)
+            {
+                case 1:
+                    menuDepositar(nome, saldo, identificador);
+                    break;
+                case 2:
+                    //MenuTransferir(nome, saldo, identificador);
+                    break;
+                case 3:
+                    //MenuSacar(nome, saldo, identificador);
+                    break;
+
+            }
+        }
+        static void menuDepositar(string nome, float saldo, int identificador)
+        {
+            Console.Clear();
+            Console.WriteLine("******** | Depositar | ******** \n\n");
+            Console.WriteLine("{0}, seu saldo é: R$ {1}\n\n", nome, saldo);
+            Console.Write("Valor que deseja depositar: ");
+            float inputValorDepsito = float.Parse(Console.ReadLine());
+            saldo = saldo + inputValorDepsito;
+            string sqlQuery = $"UPDATE pessoa SET saldo = {saldo} WHERE identificador = {identificador}";
+            var Consultar = new ProcessQuery(sqlQuery);
+            Consultar.Inserir();
+
+            ConsoleSpinner spinner = new ConsoleSpinner();
+            spinner.Delay = 500;
+            int cont = 0;
+            while (cont <= 10)
+            {
+                spinner.Turn(displayMsg: "Depositando ", sequenceCode: 4);
+                cont++;
+               
+            }
+            Console.Clear();
+            Console.Write(" ******** |");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(" DEPOSITO REALIZADO COM SUCESSO ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("| ******** \n\n");
+            Console.WriteLine("{0}, seu saldo atual é: R$: {1}\n\n", nome, saldo);
+
 
         }
         static void registrarNovaPessoa()
