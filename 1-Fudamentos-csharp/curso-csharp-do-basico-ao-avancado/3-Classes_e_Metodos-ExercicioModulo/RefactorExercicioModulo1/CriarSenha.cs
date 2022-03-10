@@ -28,7 +28,7 @@ namespace RefactorExercicioModulo1
                     {
 
                         password = password.Substring(0, (password.Length - 1));
-                        Console.Write("b b");
+
                     }
                 }
             }while (keyInfo.Key != ConsoleKey.Enter);
@@ -56,7 +56,7 @@ namespace RefactorExercicioModulo1
                     {
 
                         confirmacaoSenha = confirmacaoSenha.Substring(0, (confirmacaoSenha.Length - 1));
-                        Console.Write("b b");
+
                     }
                 }
             } while (keyInfo.Key != ConsoleKey.Enter);

@@ -58,6 +58,8 @@ namespace ConsoleApp1
             AtributosEstaticos.Executar();
 
             Desafio.Executar();
+
+            Params.Recepcionar("Ronaldo", "Luiza", "Lidia", "Talu");
         }
     }
 }
