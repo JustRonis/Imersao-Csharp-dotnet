@@ -64,6 +64,11 @@ namespace ConsoleApp1
             GetSet.Executar();
 
             Props.Executar();
+
+            Readonly.Executar();
+
+            Enum.Executar();
         }
+        
     }
 }
