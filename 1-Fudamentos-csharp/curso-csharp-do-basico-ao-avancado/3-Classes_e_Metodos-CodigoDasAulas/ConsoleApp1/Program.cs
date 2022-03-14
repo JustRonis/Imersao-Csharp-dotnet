@@ -62,6 +62,8 @@ namespace ConsoleApp1
             Params.Recepcionar("Ronaldo", "Luiza", "Lidia", "Talu");
 
             GetSet.Executar();
+
+            Props.Executar();
         }
     }
 }
