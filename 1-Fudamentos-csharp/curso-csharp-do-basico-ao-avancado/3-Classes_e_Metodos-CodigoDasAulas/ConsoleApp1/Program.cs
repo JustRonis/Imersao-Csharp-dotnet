@@ -60,6 +60,8 @@ namespace ConsoleApp1
             Desafio.Executar();
 
             Params.Recepcionar("Ronaldo", "Luiza", "Lidia", "Talu");
+
+            GetSet.Executar();
         }
     }
 }
