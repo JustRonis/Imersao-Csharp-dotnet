@@ -68,6 +68,10 @@ namespace ConsoleApp1
             Readonly.Executar();
 
             Enum.Executar();
+
+            Struct.Executar();
+
+            StructVsClasse.Executar();
         }
         
     }
